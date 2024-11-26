@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 100vw;
+        height: 100vh;
+        background: url(./bg.png) no-repeat;
+        background-size: cover;
+      }
+      .box {
+        /* 添加固定定位，让其在屏幕的正中间 */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 1920px;
+        height: 1080px;
+        background-color: red;
+        /* 改变盒子的基点为左上角，即定位的点 */
+        transform-origin: 0 0;
+      }
+      .top {
+        width: 100px;
+        height: 100px;
+        background-color: hotpink;
+        margin-left: 50px;
+      }
+      .bottom {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+        margin-left: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <div class="top">我是祖国的</div>
+        <div class="bottom">花骨朵</div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  // 控制数据大屏放大与缩小
+  let box = document.querySelector('.box');
+  // 给盒子添加转换的样式，缩放的比例为计算的值，再把位置移动到父元素的中心
+  box.style.transform = `scale(${getScale()}) translate(-50%,-50%)`;
+  // 计算缩放的比例
+  function getScale(w = 1920, h = 1080) {
+    // 计算当前屏幕和设计屏幕的缩放比例
+    const ww = window.innerWidth / w;
+    const wh = window.innerHeight / h;
+    // 保证内容不失真，选取比例最小的值
+    return Math.min(ww, wh);
+  }
+  // 当屏幕大小发生变化，就重新计算盒子的缩放比例
+  window.onresize = () => {
+    box.style.transform = `scale(${getScale()}) translate(-50%,-50%)`;
+  };
+</script>

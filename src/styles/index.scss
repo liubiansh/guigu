@@ -1,0 +1,18 @@
+@use './reset' as reset;
+@use './variable.scss' as var;
+
+// 滚动条外观设置
+::-webkit-scrollbar {
+  width: 6px;
+}
+// 滚动条的柱子
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+// 滚动条的小块
+::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  background-color: #0003;
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+}
