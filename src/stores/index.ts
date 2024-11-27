@@ -1,8 +1,0 @@
-// 引入 pinia
-import {createPinia} from 'pinia';
-
-// 创建 pinia 大仓库
-let pinia = createPinia();
-
-// 对外暴露
-export default pinia
